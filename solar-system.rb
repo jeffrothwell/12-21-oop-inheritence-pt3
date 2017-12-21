@@ -1,3 +1,4 @@
+require "pp"
 class System
 
   def initialize
@@ -17,6 +18,7 @@ class System
     @bodies.each do |body|
       total_mass += body.mass
     end
+    total_mass
   end
 
 end
@@ -63,6 +65,10 @@ class Star < Body
     @type = type
   end
 
+  def type
+    @type
+  end
+
 end
 
 class Moon < Body
@@ -82,3 +88,17 @@ class Moon < Body
   end
 
 end
+
+sol = System.new
+
+sun = Star.new("Sun", 3485747828, sol, "G-star")
+earth = Planet.new("Earth", 5747828, sol, 24, 1)
+moon = Moon.new("Moon", 247828, sol, 1, earth)
+
+pp earth
+pp sun
+pp moon
+puts "The sun's mass is #{sun.mass} Kg"
+puts "The Earth's day is #{earth.day} hours long"
+puts "The moon's planet is #{moon.planet.name}"
+puts "Total mass in the solar system Sol is #{sol.total_mass} Kg"
